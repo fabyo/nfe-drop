@@ -20,7 +20,7 @@
 
 <img src="nfe-drop.png" alt="Golang" width="200" />
 
-## Resumo para que esse projeto foi criado:
+## Objetivo do Projeto::
 - O **nfe-drop** é um motor de ingestão de NF-e, preparado para grandes volumes, que valida, parseia, enfileira, processa e persiste cada nota com logs estruturados e métricas exportadas, pronto para rodar em produção com monitoramento completo
 - Monitora pastas (incoming/, processing/, ZIP e XML) usando watcher em **Go**.
 - Consegue receber lotes gigantes de arquivos e ir empilhando na fila e processando tudo muito rapido.
