@@ -21,13 +21,15 @@ Focado em **alto throughput**, robustez e observabilidade. A ideia é aguentar m
 
 ```mermaid
 flowchart LR
-    subgraph FS["Sistema de Arquivos"]
-        A[incoming/]<-->W["nfe-drop-watcher\n(systemd + fsnotify)"]
-        W -->|move| B[processing/]
-        B -->|sucesso| C[processed/]
-        B -->|falha| D[failed/]
-        B -->|ignorado| E[ignored/]
-    end
+  subgraph Ingest
+    A[Linux inotify / fsnotify watcher] --> B[incoming/]
+    B --> C[processing/]
+  end
+
+  C -->|job JSON| Q[RabbitMQ nfe-drop-jobs]
+  Q --> W[Worker pool (Go)]
+  W --> DB[(PostgreSQL)]
+  W --> L[Logs estruturados (Graylog / Wazuh)]
 
     W -->|job (JSON)| Q["RabbitMQ\nqueue: nfe-drop-jobs"]
 
