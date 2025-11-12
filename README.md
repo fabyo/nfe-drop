@@ -18,26 +18,6 @@ Focado em **alto throughput**, robustez e observabilidade. A ideia é aguentar m
 
 ## 1. Visão Geral da Arquitetura
 
-### Fluxo de alto nível
-
-```mermaid
-flowchart LR
-  subgraph Ingest
-    A[Linux inotify / fsnotify watcher] --> B[incoming/]
-    B --> C[processing/]
-  end
-
-  C -->|job JSON| Q[RabbitMQ nfe-drop-jobs]
-  Q --> WK[nfe-drop-worker (pool de workers)]
-
-  WK -->|parse XML + valida XSD| P[(PostgreSQL: nfe, itens, duplicatas, pagamentos, xml)]
-  WK -->|logs JSON| L[Graylog / Filebeat]
-  WK -->|métricas| M[Prometheus → Grafana]
-
-  H[Hosts / agentes] --> Z[Wazuh]
-  Z --> L
-```
-
 Componentes:
 
 - **Watcher**  
