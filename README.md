@@ -534,8 +534,6 @@ ansible-playbook -i inventory.ini site.yml -K
 
 ---
 
-## 13. Por que esse projeto é interessante para recrutadores
-
 - **Go idiomático**, com separação clara de responsabilidades:
   - `internal/watcher`
   - `internal/worker`
