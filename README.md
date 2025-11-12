@@ -245,7 +245,7 @@ Tudo o resto o **Ansible** cuida:
 - Graylog + OpenSearch + Mongo (via Docker)
 - Wazuh (single-node, via Docker)
 - systemd units para watcher / worker
-- backup diário do Postgres
+- 💾🛡️ backup diário do Postgres
 
 ---
 
